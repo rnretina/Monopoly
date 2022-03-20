@@ -1,0 +1,40 @@
+-f Go 200
+-a Mediteranean Brown 60
+-c Chance
+-a Baltic Brown 60
+-t Income 200
+-r Reading 200
+-a Oriental Blue 100
+-c Chance
+-a Vermont Blue 100
+-a Connecticut Blue 100
+-f Jail
+-a StCharlesPlace Pink 140
+-pu ElectricCompany 150
+-a States Pink 140
+-a Virginia Pink 140
+-r Pennsylvania 200
+-a StJamesPlace Orange 180
+-c Chance
+-a Tennessee Orange 180
+-a NewYork Orange 200
+-f FreeParking
+-a Kentucky Red 220
+-c Chance
+-a Kentucky Red 220
+-a Illinois Red 240
+-r B&O 200
+-a Atlantic Yellow 260
+-a Ventnor Yellow 260
+-pu WaterWorks 150
+-a MarvinGardens Yellow 280
+-j GoToJail
+-a Pacific Green 300
+-a NorthCarolina Green 300
+-c Chance
+-a Pacific Green 320
+-r ShortLine 200
+-c Chance
+-a ParkPlace Black 350
+-t Luxury 100
+-a Boardwalk Black 400

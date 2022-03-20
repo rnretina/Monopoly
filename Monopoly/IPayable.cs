@@ -2,5 +2,6 @@
 
 public interface IPayable
 {
-    
+    int GetCost();
+    string GetName();
 }
