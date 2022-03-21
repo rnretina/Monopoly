@@ -1,20 +1,20 @@
 ﻿namespace Monopoly;
 
-public class PublicUtility : Field, IProperty, IPayable
+public class PublicUtility : Field, IProperty
 {
     private Player _owner;
-    public int Cost { get; set; }
+    private readonly int _cost;
     public PublicUtility(string name, int cost)
     {
         Name = name;
-        Cost = cost;
+        _cost = cost;
     }
 
     public void AssignOwner(Player player)
     {
         _owner = player;
     }
-    public int GetCost() => Cost;
+    public int GetCost() => _cost;
     public Player GetOwner() => _owner;
     public string GetName() => Name;
 }

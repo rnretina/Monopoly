@@ -3,7 +3,7 @@ using System.Security.Cryptography;
 
 namespace Monopoly;
 
-public class Railroad : Field, IProperty, IPayable
+public class Railroad : Field, IProperty
 {
     private int _cost;
     private Player _owner;

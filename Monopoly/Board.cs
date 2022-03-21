@@ -6,13 +6,13 @@ public class Board
 {
     private Field[] _board;
     public int JailPos { get; }
-    public Field[] PublicUtilityPos { get; }
+    public PublicUtility[] PublicUtility { get; set; }
+    public Field[] Fields => _board;
 
     public Board()
     {
         _board = new Field[40];
         JailPos = 10;
-        PublicUtilityPos = new Field[] {_board[12], _board[28]};
     }
 
     private void Initialize()
@@ -40,17 +40,20 @@ public class Board
     public void StartGame()
     {
         Initialize();
-        var player1 = new Player("Player1");
-        var player2 = new Player("Player2");
+        PublicUtility = new PublicUtility[] {(PublicUtility)_board[12], (PublicUtility)_board[28]};
+        var firstName = "Player1";
+        var secondName = "Player2";
+        var player1 = new Player(firstName, this);
+        var player2 = new Player(secondName, this);
         while (!(player1.IsBankrupt || player2.IsBankrupt))
         {
             player1.Move();
-            player1.ExecuteOrder(_board[player1.Position], this);
-            Thread.Sleep(5000);
+            //Thread.Sleep(6000);
+            Console.WriteLine($"{firstName} now has ${player1.Money}");
             player2.Move();
-            player2.ExecuteOrder(_board[player1.Position], this);
+            Console.WriteLine($"{secondName} now has ${player2.Money}");
             Console.WriteLine("------------------");
-            Thread.Sleep(5000);
+            //Thread.Sleep(6000);
         }
 
         Console.WriteLine(player1.IsBankrupt ? "player 1 lost" : "player 2 lost");

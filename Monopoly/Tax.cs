@@ -1,8 +1,8 @@
 ﻿namespace Monopoly;
 
-public class Tax : Field, IPayable 
+public class Tax : Field
 {
-    private int _cost;
+    private readonly int _cost;
     public Tax(string name, int cost)
     {
         Name = name;

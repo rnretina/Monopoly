@@ -3,7 +3,7 @@
 public interface IProperty
 {
     void AssignOwner(Player player);
-    Player? GetOwner();
+    Player GetOwner();
     string GetName();
     int GetCost();
 }

@@ -1,6 +1,6 @@
 ﻿namespace Monopoly;
 
-public class Avenue : Field, IProperty, IPayable
+public class Avenue : Field, IProperty
 {
     public enum AvenueColor
     {
