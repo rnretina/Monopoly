@@ -15,7 +15,7 @@ public class Player
     public bool IsBankrupt => _money < 0;
     public int Money => _money;
     
-    public Player(string? name, Board board)
+    public Player(string name, Board board)
     {
         _board = board;
         _property = new List<IProperty>();

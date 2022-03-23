@@ -40,7 +40,7 @@ public class Board
     public void StartGame()
     {
         Initialize();
-        PublicUtility = new PublicUtility[] {(PublicUtility)_board[12], (PublicUtility)_board[28]};
+        PublicUtility = new[] {(PublicUtility)_board[12], (PublicUtility)_board[28]};
         var firstName = "Player1";
         var secondName = "Player2";
         var player1 = new Player(firstName, this);
