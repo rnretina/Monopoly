@@ -1,0 +1,40 @@
+-f Go 200
+-a MediteraneanAvenut Brown 60
+-c Chance
+-a BalticAvenue Brown 60
+-t IncomeTax 200
+-r ReadingRailroad 200
+-a OrientalAvenue Blue 100
+-c Chance
+-a VermontAvenue Blue 100
+-a ConnecticutAvenue Blue 100
+-f Jail
+-a StCharlesPlace Pink 140
+-pu ElectricCompany 150
+-a StatesAvenue Pink 140
+-a VirginiaAvenue Pink 140
+-r PennsylvaniaRailroad 200
+-a StJamesPlace Orange 180
+-c Chance
+-a TennesseeAvenue Orange 180
+-a NewYorkAvenue Orange 200
+-f FreeParking
+-a KentuckyAvenue Red 220
+-c Chance
+-a IndianaAvenue Red 220
+-a Illinois Red 240
+-r B&O 200
+-a AtlanticAvenue Yellow 260
+-a VentnorAvenue Yellow 260
+-pu WaterWorks 150
+-a MarvinGardensAvenue Yellow 280
+-j GoToJail
+-a PacificAvenue Green 300
+-a NorthCarolinaAvenue Green 300
+-c Chance
+-a Pacific Green 320
+-r ShortLine 200
+-c Chance
+-a ParkPlace Black 350
+-t LuxuryTax 100
+-a Boardwalk Black 400
