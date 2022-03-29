@@ -2,7 +2,7 @@
 
 public class Field
 {
-    protected string Name { get;  set; }
+    public string Name { get;  set; }
 }
 
 public class Chance : Field

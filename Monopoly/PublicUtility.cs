@@ -2,10 +2,11 @@
 
 public class PublicUtility : Field, IProperty
 {
-    private Player _owner;
+    private Player? _owner;
     private readonly int _cost;
     public PublicUtility(string name, int cost)
     {
+        _owner = null;
         Name = name;
         _cost = cost;
     }
@@ -15,6 +16,6 @@ public class PublicUtility : Field, IProperty
         _owner = player;
     }
     public int GetCost() => _cost;
-    public Player GetOwner() => _owner;
+    public Player? GetOwner() => _owner;
     public string GetName() => Name;
 }

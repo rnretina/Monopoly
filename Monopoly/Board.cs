@@ -15,7 +15,7 @@ public class Board
         JailPos = 10;
     }
 
-    private void Initialize()
+    public void Initialize()
     {
         var file = File.ReadAllLines(@"D:\c#projects\Monopoly\Monopoly\settings.txt");
         var i = 0;
@@ -24,7 +24,7 @@ public class Board
             var splitString = element.Split();
             _board[i] = splitString[0] switch
             {
-                "-a" => new Avenue(splitString[1], GetColor(splitString[2]), int.Parse(splitString[3])),
+                "-a" => new Avenue(splitString[1], GetColor(splitString[2]), int.Parse(splitString[3]), 0, null),
                 "-t" => new Tax(splitString[1], int.Parse(splitString[2])),
                 "-r" => new Railroad(splitString[1], int.Parse(splitString[2])),
                 "-pu" => new PublicUtility(splitString[1], int.Parse(splitString[2])),
@@ -45,18 +45,23 @@ public class Board
         var secondName = "Player2";
         var player1 = new Player(firstName, this);
         var player2 = new Player(secondName, this);
-        while (!(player1.IsBankrupt || player2.IsBankrupt))
+        for (int i = 0; i < 150; i++)
         {
             player1.Move();
-            //Thread.Sleep(6000);
-            Console.WriteLine($"{firstName} now has ${player1.Money}");
-            player2.Move();
-            Console.WriteLine($"{secondName} now has ${player2.Money}");
-            Console.WriteLine("------------------");
-            //Thread.Sleep(6000);
+            Console.WriteLine("---------------------");
         }
+        // while (player1.Money >= 0 && player2.Money >= 0)
+        // {
+        //     player1.Move();
+        //     //Thread.Sleep(6000);
+        //     Console.WriteLine($"{firstName} now has ${player1.Money}");
+        //     player2.Move();
+        //     Console.WriteLine($"{secondName} now has ${player2.Money}");
+        //     Console.WriteLine("------------------");
+        //     //Thread.Sleep(6000);
+        // }
 
-        Console.WriteLine(player1.IsBankrupt ? "player 1 lost" : "player 2 lost");
+        Console.WriteLine(player1.Money < 0 ? "player 1 lost" : "player 2 lost");
         
     }
 

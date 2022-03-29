@@ -4,27 +4,29 @@ public class Avenue : Field, IProperty
 {
     public enum AvenueColor
     {
-        Brown, Blue, Pink, Orange, Red, Yellow, Green, Black
+        Brown, Blue, Pink, Orange, Red, Yellow, Green, Black,
     }
+    
+    private Player? _owner;
+    public int Lvl { get; set; }
+    public AvenueColor Color { get; set; }
+    public int Cost {get; set;}
 
-    private int _cost;
-    private Player _owner;
-    public AvenueColor Color { get; }
-
-    public Avenue(string name, AvenueColor color, int cost)
+    public Avenue(string name, AvenueColor color, int cost, int lvl, Player owner)
     {
+        Lvl = lvl;
         Name = name;
         Color = color;
-        _cost = cost;
+        Cost = cost;
+        _owner = owner;
     }
-
+    
     public void AssignOwner(Player player)
     {
         _owner = player;
     }
 
-    public Player GetOwner() => _owner;
-    public int GetCost() => _cost;
-    public string GetName() => Name;
-
+    public Player? GetOwner() => _owner;
+    public int GetCost() => Cost;
+    public virtual string GetName() => Name;
 }

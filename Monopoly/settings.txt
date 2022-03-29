@@ -1,5 +1,5 @@
 -f Go 200
--a MediteraneanAvenut Brown 60
+-a MediteraneanAvenue Brown 60
 -c Chance
 -a BalticAvenue Brown 60
 -t IncomeTax 200

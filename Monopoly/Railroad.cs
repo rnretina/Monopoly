@@ -10,6 +10,7 @@ public class Railroad : Field, IProperty
 
     public Railroad(string name, int cost)
     {
+        _owner = null;
         Name = name;
         _cost = cost;
     }
@@ -20,6 +21,6 @@ public class Railroad : Field, IProperty
     }
 
     public int GetCost() => _cost;
-    public Player GetOwner() => _owner;
+    public Player? GetOwner() => _owner;
     public string GetName() => Name;
 }

@@ -2,6 +2,8 @@
 Microsoft Visual Studio Solution File, Format Version 12.00
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Monopoly", "Monopoly\Monopoly.csproj", "{50734747-A104-4FB4-A257-20D9FCB295FB}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MonopolyTest", "MonopolyTest\MonopolyTest.csproj", "{1E822396-20EA-463F-9425-CAEB9025C3D4}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -12,5 +14,9 @@ Global
 		{50734747-A104-4FB4-A257-20D9FCB295FB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{50734747-A104-4FB4-A257-20D9FCB295FB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{50734747-A104-4FB4-A257-20D9FCB295FB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1E822396-20EA-463F-9425-CAEB9025C3D4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1E822396-20EA-463F-9425-CAEB9025C3D4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1E822396-20EA-463F-9425-CAEB9025C3D4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1E822396-20EA-463F-9425-CAEB9025C3D4}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 EndGlobal
