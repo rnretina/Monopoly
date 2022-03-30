@@ -20,7 +20,7 @@ public class Player
         _board = board;
         _property = new List<IProperty>();
         _name = name;
-        Money = 20000000;
+        Money = 2000;
         _doublesInRow = 0;
         _isInJail = false;
         _position = 0;
@@ -86,9 +86,9 @@ public class Player
     private void PublicUtilityMove(PublicUtility publicUtility)
     {
         if (TryBuyProperty(publicUtility)) return;
-        if (publicUtility.GetOwner() != this && publicUtility.GetOwner() != null)
+        if (publicUtility.Owner != this && publicUtility.Owner != null)
         {
-            var multiplier = (_board.PublicUtility[0].GetOwner() == _board.PublicUtility[1].GetOwner()) ? 10 : 4;
+            var multiplier = (_board.PublicUtility[0].Owner == _board.PublicUtility[1].Owner) ? 10 : 4;
             var price = multiplier * (_die1 + _die2);
             while (price > Money)
             {
@@ -99,15 +99,15 @@ public class Player
                     return;
                 }
                 var mostExpensive = GetMostExpensiveProperty();
-                Money += mostExpensive.GetCost();
+                Money += mostExpensive.Cost;
                 mostExpensive.AssignOwner(null);
                 _property.Remove(mostExpensive);
-                Console.WriteLine($"{_name} sold {mostExpensive.GetName()} for ${mostExpensive.GetCost()}");
+                Console.WriteLine($"{_name} sold {mostExpensive.Name} for ${mostExpensive.Cost}");
             }
 
             Money -= price;
-            publicUtility.GetOwner().Money += price;
-            Console.WriteLine($"{_name} pays ${price} for visiting {publicUtility.GetName()}");
+            publicUtility.Owner.Money += price;
+            Console.WriteLine($"{_name} pays ${price} for visiting {publicUtility.Name}");
         }
     }
 
@@ -118,7 +118,7 @@ public class Player
         {
             TryUpgradeAvenue(avenue);
         }
-        if (property.GetOwner() != null && property.GetOwner() != this)
+        if (property.Owner != null && property.Owner != this)
         {
             TryPayProperty(property);
         }
@@ -126,12 +126,12 @@ public class Player
 
     private bool TryBuyProperty(IProperty property)
     {
-        if (Money >= property.GetCost() && property.GetOwner() == null)
+        if (Money >= property.Cost && property.Owner == null)
         {
-            Money -= property.GetCost();
+            Money -= property.Cost;
             property.AssignOwner(this);
             _property.Add(property);
-            Console.WriteLine($"{_name} buys {property.GetName()} for ${property.GetCost()}");
+            Console.WriteLine($"{_name} buys {property.Name} for ${property.Cost}");
             return true;
         }
 
@@ -140,7 +140,7 @@ public class Player
 
     private void TryPayProperty(IProperty property)
     {
-        while (property.GetCost() > Money)
+        while (property.Cost > Money)
         {
             if (_property.Count == 0)
             {
@@ -149,14 +149,14 @@ public class Player
                 return;
             }
             var mostExpensive = GetMostExpensiveProperty();
-            Money += mostExpensive.GetCost();
+            Money += mostExpensive.Cost;
             mostExpensive.AssignOwner(null);
             _property.Remove(mostExpensive);
-            Console.WriteLine($"{_name} sold {mostExpensive.GetName()} for ${mostExpensive.GetCost()}");
+            Console.WriteLine($"{_name} sold {mostExpensive.Name} for ${mostExpensive.Cost}");
         }
-        Money -= property.GetCost();
-        property.GetOwner().Money += property.GetCost();
-        Console.WriteLine($"{_name} pays Tax {property.GetName()} ${property.GetCost()} to {property.GetOwner()._name}");
+        Money -= property.Cost;
+        property.Owner.Money += property.Cost;
+        Console.WriteLine($"{_name} pays Tax {property.Name} ${property.Cost} to {property.Owner._name}");
     }
     
     private void TryPay(Tax tax)
@@ -170,10 +170,10 @@ public class Player
                 return;
             }
             var mostExpensive = GetMostExpensiveProperty();
-            Money += mostExpensive.GetCost();
+            Money += mostExpensive.Cost;
             mostExpensive.AssignOwner(null);
             _property.Remove(mostExpensive);
-            Console.WriteLine($"{_name} sold {mostExpensive.GetName()} for ${mostExpensive.GetCost()}");
+            Console.WriteLine($"{_name} sold {mostExpensive.Name} for ${mostExpensive.Cost}");
         }
 
         Console.WriteLine($"{_name} pays {tax.Name}");
@@ -228,10 +228,10 @@ public class Player
                     return;
                 }
                 var mostExpensive = GetMostExpensiveProperty();
-                Money += mostExpensive.GetCost();
+                Money += mostExpensive.Cost;
                 mostExpensive.AssignOwner(null);
                 _property.Remove(mostExpensive);
-                Console.WriteLine($"{_name} sold {mostExpensive.GetName()} for ${mostExpensive.GetCost()}");
+                Console.WriteLine($"{_name} sold {mostExpensive.Name} for ${mostExpensive.Cost}");
             }
 
             Money -= val;
@@ -266,7 +266,7 @@ public class Player
         };
         _property.Add((Avenue)_board.Fields[_position]);
         Money -= avenue.Cost;
-        Console.WriteLine($"{_name} upgrades {avenue.GetName()} to Lvl {((Avenue)_board.Fields[_position]).Lvl} for ${avenue.GetCost()}");
+        Console.WriteLine($"{_name} upgrades {avenue.Name} to Lvl {((Avenue)_board.Fields[_position]).Lvl} for ${avenue.Cost}");
     }
 
     private void TryGetOutOfJail()
@@ -311,7 +311,7 @@ public class Player
         var max = _property[0];
         foreach (var item in _property)
         {
-            if (item.GetCost() > max.GetCost())
+            if (item.Cost > max.Cost)
                 max = item;
         }
 

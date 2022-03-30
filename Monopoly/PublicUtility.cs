@@ -2,20 +2,17 @@
 
 public class PublicUtility : Field, IProperty
 {
-    private Player? _owner;
-    private readonly int _cost;
+    public Player? Owner { get; set; }
+    public int Cost { get; set; }
     public PublicUtility(string name, int cost)
     {
-        _owner = null;
+        Owner = null;
         Name = name;
-        _cost = cost;
+        Cost = cost;
     }
 
     public void AssignOwner(Player player)
     {
-        _owner = player;
+        Owner = player;
     }
-    public int GetCost() => _cost;
-    public Player? GetOwner() => _owner;
-    public string GetName() => Name;
 }

@@ -16,60 +16,60 @@ public class Tests
         _board.Initialize();
         _player1 = new Player("pl1", _board);
         _player2 = new Player("pl2", _board);
-        _avenue = new Avenue("Montana", Avenue.AvenueColor.Blue, 100, 0, _player1);
+        _avenue = new Avenue("Montana", "Montana", Avenue.AvenueColor.Blue, 100, 0, _player1);
     }
 
     [Test]
     public void AssignOwnerNull_Should_RemoveOwner()
     {
         _avenue.AssignOwner(null);
-        Assert.IsTrue(_avenue.GetOwner() == null);
+        Assert.IsTrue(_avenue.Owner == null);
     }
     
     [Test]
     public void AssignOwner_Should_ChangeOwner()
     {
         _avenue.AssignOwner(_player2);
-        Assert.IsTrue(_avenue.GetOwner() == _player2);
+        Assert.IsTrue(_avenue.Owner == _player2);
     }
     
     [Test]
     public void SequentialUpgradeAvenue_ShouldNot_ChangeOwner()
     {
         var decoratedAvenue1 = new Decorator1(_avenue);
-        Assert.IsTrue(decoratedAvenue1.GetOwner() == _avenue.GetOwner());
+        Assert.IsTrue(decoratedAvenue1.Owner == _avenue.Owner);
         var decoratedAvenue2 = new Decorator2(decoratedAvenue1);
-        Assert.IsTrue(decoratedAvenue2.GetOwner() == decoratedAvenue1.GetOwner());
+        Assert.IsTrue(decoratedAvenue2.Owner == decoratedAvenue1.Owner);
         var decoratedAvenue3 = new Decorator3(decoratedAvenue2);
-        Assert.IsTrue(decoratedAvenue3.GetOwner() == decoratedAvenue2.GetOwner());
+        Assert.IsTrue(decoratedAvenue3.Owner == decoratedAvenue2.Owner);
         var decoratedAvenue4 = new DecoratorHotel(decoratedAvenue3);
-        Assert.IsTrue(decoratedAvenue4.GetOwner() == decoratedAvenue3.GetOwner());
+        Assert.IsTrue(decoratedAvenue4.Owner == decoratedAvenue3.Owner);
     }
 
     [Test]
     public void SequentialUpgradeAvenue_Should_ChangeName()
     {
         var decoratedAvenue1 = new Decorator1(_avenue);
-        Assert.AreEqual("Montana Lvl 1",decoratedAvenue1.GetName());
+        Assert.AreEqual("Montana Lvl 1",decoratedAvenue1.Name);
         var decoratedAvenue2 = new Decorator2(decoratedAvenue1);
-        Assert.AreEqual("Montana Lvl 2",decoratedAvenue2.GetName());
+        Assert.AreEqual("Montana Lvl 2",decoratedAvenue2.Name);
         var decoratedAvenue3 = new Decorator3(decoratedAvenue2);
-        Assert.AreEqual("Montana Lvl 3",decoratedAvenue3.GetName());
+        Assert.AreEqual("Montana Lvl 3",decoratedAvenue3.Name);
         var decoratedAvenue4 = new DecoratorHotel(decoratedAvenue3);
-        Assert.AreEqual("Montana Lvl Hotel",decoratedAvenue4.GetName());
+        Assert.AreEqual("Montana Lvl Hotel",decoratedAvenue4.Name);
     }
 
     [Test]
     public void SequentialUpgradeAvenue_Should_ReturnCorrectCost()
     {
         var decoratedAvenue1 = new Decorator1(_avenue);
-        Assert.AreEqual(_avenue.Cost * 2, decoratedAvenue1.GetCost());
+        Assert.AreEqual(_avenue.Cost * 2, decoratedAvenue1.Cost);
         var decoratedAvenue2 = new Decorator2(decoratedAvenue1);
-        Assert.AreEqual(decoratedAvenue1.Cost * 3, decoratedAvenue2.GetCost());
+        Assert.AreEqual(decoratedAvenue1.Cost * 2, decoratedAvenue2.Cost);
         var decoratedAvenue3 = new Decorator3(decoratedAvenue2);
-        Assert.AreEqual(decoratedAvenue2.Cost * 4, decoratedAvenue3.GetCost());
+        Assert.AreEqual(decoratedAvenue2.Cost * 2, decoratedAvenue3.Cost);
         var decoratedAvenue4 = new DecoratorHotel(decoratedAvenue3);
-        Assert.AreEqual(decoratedAvenue3.Cost * 8, decoratedAvenue4.GetCost());
+        Assert.AreEqual(decoratedAvenue3.Cost * 2, decoratedAvenue4.Cost);
     }
     
     [Test]

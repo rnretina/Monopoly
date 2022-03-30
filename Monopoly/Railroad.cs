@@ -5,22 +5,19 @@ namespace Monopoly;
 
 public class Railroad : Field, IProperty
 {
-    private int _cost;
-    private Player _owner;
+    public int Cost { get; set; }
+    public string Name { get; set; }
+    public Player? Owner { get; set; }
 
     public Railroad(string name, int cost)
     {
-        _owner = null;
+        Owner = null;
         Name = name;
-        _cost = cost;
+        Cost = cost;
     }
 
     public void AssignOwner(Player player)
     {
-        _owner = player;
+        Owner = player;
     }
-
-    public int GetCost() => _cost;
-    public Player? GetOwner() => _owner;
-    public string GetName() => Name;
 }

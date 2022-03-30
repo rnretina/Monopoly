@@ -9,8 +9,8 @@ public class Decorator1 : AvenueDecorator
         _avenue = avenue;
     }
     
-    public override string GetName() => _avenue.Name + " Lvl 1";
-    public new virtual int GetCost() => _avenue.GetCost() * 2;
+    public override string Name => _avenue.BaseName + " Lvl 1";
+    public override int Cost => _avenue.Cost * 2;
 }
 
 public class Decorator2 : AvenueDecorator
@@ -22,8 +22,8 @@ public class Decorator2 : AvenueDecorator
         _avenue = avenue;
     }
     
-    public override string GetName() => _avenue.Name + " Lvl 2";
-    public new virtual int GetCost() => _avenue.GetCost() * 3;
+    public override string Name => _avenue.BaseName + " Lvl 2";
+    public override int Cost => _avenue.Cost * 2;
 }
 
 public class Decorator3 : AvenueDecorator
@@ -35,8 +35,8 @@ public class Decorator3 : AvenueDecorator
         _avenue = avenue;
     }
     
-    public override string GetName() => _avenue.Name + " Lvl 3";
-    public new virtual int GetCost() => _avenue.GetCost() * 4;
+    public override string Name => _avenue.BaseName + " Lvl 3";
+    public override int Cost => _avenue.Cost * 2;
 }
 
 public class DecoratorHotel : AvenueDecorator
@@ -48,6 +48,6 @@ public class DecoratorHotel : AvenueDecorator
         _avenue = avenue;
     }
     
-    public override string GetName() => _avenue.Name + " Lvl Hotel";
-    public new virtual int GetCost() => _avenue.GetCost() * 8;
+    public override string Name => _avenue.BaseName + " Lvl Hotel";
+    public override int Cost => _avenue.Cost * 2;
 }
