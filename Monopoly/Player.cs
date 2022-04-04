@@ -4,7 +4,7 @@ namespace Monopoly;
 
 public class Player
 {
-    private Board _board;
+    private readonly Board _board;
     private List<IProperty> _property;
     private int _daysInJail;
     private int _position;
@@ -257,9 +257,9 @@ public class Player
         _property.Remove(avenue);
         _board.Fields[_position] = avenue.Lvl switch
         {
-            0 => new Decorator1(avenue),
-            1 => new Decorator2(avenue),
-            2 => new Decorator3(avenue),
+            0 => new DecoratorLvl1(avenue),
+            1 => new DecoratorLvl2(avenue),
+            2 => new DecoratorLvl3(avenue),
             3 => new DecoratorHotel(avenue),
             4 => avenue,
             _ => throw new ArgumentOutOfRangeException()

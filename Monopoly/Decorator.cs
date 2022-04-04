@@ -1,10 +1,10 @@
 ﻿namespace Monopoly;
 
-public class Decorator1 : AvenueDecorator
+public class DecoratorLvl1 : AvenueDecorator
 {
-    private Avenue _avenue;
+    private readonly Avenue _avenue;
     
-    public Decorator1(Avenue avenue) : base(avenue)
+    public DecoratorLvl1(Avenue avenue) : base(avenue)
     {
         _avenue = avenue;
     }
@@ -13,11 +13,11 @@ public class Decorator1 : AvenueDecorator
     public override int Cost => _avenue.Cost * 2;
 }
 
-public class Decorator2 : AvenueDecorator
+public class DecoratorLvl2 : AvenueDecorator
 {
-    private Avenue _avenue;
+    private readonly Avenue _avenue;
     
-    public Decorator2(Avenue avenue) : base(avenue)
+    public DecoratorLvl2(Avenue avenue) : base(avenue)
     {
         _avenue = avenue;
     }
@@ -26,11 +26,11 @@ public class Decorator2 : AvenueDecorator
     public override int Cost => _avenue.Cost * 2;
 }
 
-public class Decorator3 : AvenueDecorator
+public class DecoratorLvl3 : AvenueDecorator
 {
-    private Avenue _avenue;
+    private readonly Avenue _avenue;
     
-    public Decorator3(Avenue avenue) : base(avenue)
+    public DecoratorLvl3(Avenue avenue) : base(avenue)
     {
         _avenue = avenue;
     }
@@ -41,7 +41,7 @@ public class Decorator3 : AvenueDecorator
 
 public class DecoratorHotel : AvenueDecorator
 {
-    private Avenue _avenue;
+    private readonly Avenue _avenue;
     
     public DecoratorHotel(Avenue avenue) : base(avenue)
     {

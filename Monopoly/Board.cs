@@ -2,24 +2,23 @@
 
 public class Board
 {
-    private Field[] _board;
-    public int JailPos { get; }
-    public PublicUtility[] PublicUtility { get; set; }
-    public Field[] Fields => _board;
+    public PublicUtility[]? PublicUtility { get; private set; }
+    public Field[] Fields { get; }
 
     public Board()
     {
-        _board = new Field[40];
+        Fields = new Field[40];
+        Initialize();
     }
 
-    public void Initialize()
+    private void Initialize()
     {
         var file = File.ReadAllLines(@"D:\c#projects\Monopoly\Monopoly\settings.txt");
         var i = 0;
         foreach (var element in file)
         {
             var splitString = element.Split();
-            _board[i] = splitString[0] switch
+            Fields[i] = splitString[0] switch
             {
                 "-a" => new Avenue(splitString[1], splitString[1], GetColor(splitString[2]), 
                     int.Parse(splitString[3]), 0, null),
@@ -37,8 +36,7 @@ public class Board
 
     public void StartGame()
     {
-        Initialize();
-        PublicUtility = new[] {(PublicUtility)_board[12], (PublicUtility)_board[28]};
+        PublicUtility = new[] {(PublicUtility)Fields[12], (PublicUtility)Fields[28]};
         var firstName = "Player1";
         var secondName = "Player2";
         var player1 = new Player(firstName, this);

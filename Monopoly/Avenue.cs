@@ -7,9 +7,9 @@ public class Avenue : Field, IProperty
         Brown, Blue, Pink, Orange, Red, Yellow, Green, Black,
     }
     
-    public Player? Owner { get; set; }
-    public virtual int Cost { get; set; }
-    public new virtual string Name { get; set; }
+    public Player? Owner { get; private set; }
+    public virtual int Cost { get; }
+    public new virtual string Name { get;  }
     public int Lvl { get; set; }
     public AvenueColor Color { get; set; }
     public string BaseName { get; }
