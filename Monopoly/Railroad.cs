@@ -1,12 +1,9 @@
-﻿using System.Globalization;
-using System.Security.Cryptography;
-
-namespace Monopoly;
+﻿namespace Monopoly;
 
 public class Railroad : Field, IProperty
 {
-    public int Cost { get; set; }
-    public string Name { get; set; }
+    public int Cost { get; }
+    public string Name { get;  }
     public Player? Owner { get; set; }
 
     public Railroad(string name, int cost)
@@ -19,5 +16,14 @@ public class Railroad : Field, IProperty
     public void AssignOwner(Player player)
     {
         Owner = player;
+    }
+
+    public override void Execute(Player player)
+    {
+        if (player.TryBuyProperty(this)) return;
+        if (Owner != player && Owner != null)
+        {
+            player.TryPayProperty(this);
+        }
     }
 }

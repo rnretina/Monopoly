@@ -4,6 +4,7 @@ public class Board
 {
     public PublicUtility[]? PublicUtility { get; private set; }
     public Field[] Fields { get; }
+    public Jail Jail { get; private set; }
 
     public Board()
     {
@@ -32,33 +33,26 @@ public class Board
             };
             i++;
         }
+
+        Jail = (Jail)Fields[30];
     }
 
     public void StartGame()
     {
         PublicUtility = new[] {(PublicUtility)Fields[12], (PublicUtility)Fields[28]};
-        var firstName = "Player1";
-        var secondName = "Player2";
-        var player1 = new Player(firstName, this);
-        var player2 = new Player(secondName, this);
-        // for (int i = 0; i < 150; i++)
-        // {
-        //     player1.Move();
-        //     Console.WriteLine("---------------------");
-        // }
+        var player1 = new Player("Player1", this);
+        var player2 = new Player("Player2", this);
         while (player1.Money >= 0 && player2.Money >= 0)
         {
             player1.Move();
             //Thread.Sleep(6000);
-            Console.WriteLine($"{firstName} now has ${player1.Money}");
+            Console.WriteLine($"{player1.Name} now has ${player1.Money}");
             player2.Move();
-            Console.WriteLine($"{secondName} now has ${player2.Money}");
+            Console.WriteLine($"{player2.Name} now has ${player2.Money}");
             Console.WriteLine("------------------");
             //Thread.Sleep(6000);
         }
-
-        Console.WriteLine(player1.Money < 0 ? "player 1 lost" : "player 2 lost");
-        
+        Console.WriteLine(player1.Money < 0 ? $"{player1.Name} lost" : $"{player2.Name} lost");
     }
 
     private Avenue.AvenueColor GetColor(string s)

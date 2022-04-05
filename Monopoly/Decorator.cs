@@ -1,6 +1,6 @@
 ﻿namespace Monopoly;
 
-public class DecoratorLvl1 : AvenueDecorator
+public class DecoratorLvl1 :AvenueDecorator
 {
     private readonly Avenue _avenue;
     
@@ -11,6 +11,11 @@ public class DecoratorLvl1 : AvenueDecorator
     
     public override string Name => _avenue.BaseName + " Lvl 1";
     public override int Cost => _avenue.Cost * 2;
+
+    public override void UpgradeToNextLvl(Player player)
+    {
+        player.Board.Fields[player.Position] = new DecoratorLvl2(this);
+    }
 }
 
 public class DecoratorLvl2 : AvenueDecorator
@@ -24,6 +29,10 @@ public class DecoratorLvl2 : AvenueDecorator
     
     public override string Name => _avenue.BaseName + " Lvl 2";
     public override int Cost => _avenue.Cost * 2;
+    public override void UpgradeToNextLvl(Player player)
+    {
+        player.Board.Fields[player.Position] = new DecoratorLvl3(this);
+    }
 }
 
 public class DecoratorLvl3 : AvenueDecorator
@@ -37,6 +46,11 @@ public class DecoratorLvl3 : AvenueDecorator
     
     public override string Name => _avenue.BaseName + " Lvl 3";
     public override int Cost => _avenue.Cost * 2;
+    
+    public override void UpgradeToNextLvl(Player player)
+    {
+        player.Board.Fields[player.Position] = new DecoratorLvl3(this);
+    }
 }
 
 public class DecoratorHotel : AvenueDecorator
@@ -50,4 +64,9 @@ public class DecoratorHotel : AvenueDecorator
     
     public override string Name => _avenue.BaseName + " Lvl Hotel";
     public override int Cost => _avenue.Cost * 2;
+    
+    public override void UpgradeToNextLvl(Player player)
+    {
+        
+    }
 }

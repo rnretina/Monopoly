@@ -8,7 +8,7 @@
 -c Chance
 -a VermontAvenue Blue 100
 -a ConnecticutAvenue Blue 100
--f Jail
+-f FreeParking
 -a StCharlesPlace Pink 140
 -pu ElectricCompany 150
 -a StatesAvenue Pink 140
@@ -28,7 +28,7 @@
 -a VentnorAvenue Yellow 260
 -pu WaterWorks 150
 -a MarvinGardensAvenue Yellow 280
--j GoToJail
+-j Jail
 -a PacificAvenue Green 300
 -a NorthCarolinaAvenue Green 300
 -c Chance

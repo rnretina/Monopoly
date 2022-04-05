@@ -3,14 +3,5 @@
 public class Field
 {
     public string Name { get;  set; }
-}
-
-public class Chance : Field
-{
-    
-}
-
-public class Jail : Field
-{
-
+    public virtual void Execute(Player player) => Console.WriteLine($"free field");
 }
